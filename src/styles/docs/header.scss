@@ -1,0 +1,132 @@
+.docs-header {
+  display: flex;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--amplify-colors-background-primary);
+  z-index: 100;
+  border-bottom: var(--amplify-borders-primary);
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  padding: var(--amplify-space-small) var(--amplify-space-large);
+
+  @media (min-width: 62rem) {
+    justify-content: space-between;
+  }
+
+  // Hide theme color mode switcher on mobile
+  // for main nav header
+  @media (max-width: 767px) {
+    .color-switcher {
+      display: none;
+    }
+  }
+}
+
+.docs-header-mobile-nav {
+  background-color: var(--amplify-colors-background-primary);
+  z-index: 99;
+
+  .expanded + & {
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    overflow-y: auto;
+    padding: 0;
+  }
+
+  // Hide theme color mode switcher from mobile nav
+  // on larger screens
+  @media (min-width: 768px) {
+    .color-switcher__wrapper {
+      display: none;
+    }
+  }
+  .color-switcher__wrapper {
+    padding-block-start: var(--amplify-space-small);
+  }
+}
+
+.docs-header-menu-button {
+  @media (min-width: 62rem) {
+    display: none;
+  }
+}
+
+.docs-nav {
+  display: none;
+
+  @media (min-width: 62rem) {
+    display: flex;
+    padding: 0 var(--amplify-space-medium);
+  }
+  .docs-header-mobile-nav & {
+    display: flex;
+    width: 100%;
+    visibility: visible;
+    white-space: nowrap;
+    overflow-x: auto;
+    border-bottom: var(--amplify-border-widths-small) solid
+      var(--amplify-colors-border-primary);
+    padding-block: var(--amplify-space-medium);
+  }
+}
+
+[data-amplify-theme] .docs-nav-link {
+  padding: var(--amplify-space-xs) var(--amplify-space-small);
+  text-decoration: none;
+  color: var(--amplify-colors-font-secondary);
+  display: inline-block;
+  font-weight: 500;
+  /* why do I need to do this? */
+  cursor: pointer;
+
+  // Logo should grow to take the most space on mobile header
+  @media (max-width: 991px) {
+    & {
+      flex-grow: 1;
+    }
+  }
+}
+
+[data-amplify-theme] .docs-nav-link:hover {
+  color: var(--amplify-colors-font-interactive);
+}
+
+.docs-nav > .amplify-divider {
+  margin: var(--amplify-space-small);
+  height: 1rem;
+  border-color: var(--amplify-colors-border-secondary);
+}
+
+[data-amplify-theme] .docs-nav-link.current {
+  color: var(--amplify-colors-font-hover);
+  background-color: var(--amplify-colors-brand-primary-10);
+}
+
+.docs-logo-svg {
+  height: 1.5rem;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.docs-logo-link {
+  display: inline-block;
+  color: var(--amplify-colors-font-secondary);
+  text-decoration: none;
+  cursor: pointer;
+  transition: all 1s ease;
+}
+
+.docs-logo-link:hover {
+  --amplify-colors-font-primary: var(--amplify-colors-brand-primary-60);
+}
+
+.docs-logo-link:active {
+  --amplify-colors-font-primary: var(--amplify-colors-brand-primary-80);
+}
+
+.docs-logo-link path {
+  transition: all var(--amplify-time-short) ease;
+}

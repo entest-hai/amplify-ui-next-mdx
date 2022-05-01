@@ -1,0 +1,79 @@
+.docs-home-description {
+  color: var(--amplify-colors-font-secondary);
+  font-size: var(--amplify-font-sizes-xl);
+}
+
+.docs-home-feature-card {
+  /* box-shadow: none; */
+  border-width: 0;
+}
+
+.docs-home-flutter {
+  height: 10rem;
+  padding: 1.4rem 0 0.6rem 0.75rem;
+}
+
+.docs-home-vue {
+  height: 10rem;
+}
+
+.docs-home-react {
+  height: 10rem;
+}
+
+.docs-home-angular {
+  height: 10rem;
+}
+
+.docs-home-section {
+  position: relative;
+  padding: var(--amplify-space-xl);
+}
+
+.install-code__container {
+  flex-grow: 1;
+  display: flex;
+}
+
+.install-code__content {
+  margin: auto;
+  overflow-x: auto;
+  white-space: normal;
+}
+
+.install-code__button {
+  place-self: end;
+  align-self: center;
+  // Hiding on smaller screens
+  // because there's not enough space
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
+
+.docs-home-amp-product-card {
+  transition: transform var(--amplify-time-medium) ease;
+  display: block;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+
+  & > .amplify-card {
+    width: 100%;
+  }
+}
+
+.docs-home-logo {
+  @media (max-width: 768px) {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}

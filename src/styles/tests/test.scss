@@ -1,0 +1,35 @@
+.test-docs-content {
+  display: flex; 
+  flex-direction: row;
+  min-width: 0;
+  flex: 1 auto;
+}
+
+
+.test-docs-sidebar-nav {
+  padding: var(--amplify-space-medium) 0;
+}
+
+
+.test-docs-sidebar-inner {
+  height: calc(100vh - var(--docs-header-height));
+  width: 16rem;
+  overflow-y: auto;
+  position:fixed; 
+  border-right: var(--amplify-border-withds-small) solid var(--amplify-colors-border-primary);
+  box-shadow: var(--amplify-shadows-medium);
+  z-index: 10;
+}
+
+.test-docs-sidebar {
+  display: none;
+  background-color: aquamarine;
+
+  @media (min-width: 62rem) {
+    display: block;
+    flex-shrink: 0;
+    width: 16rem;
+    position: relative;
+      }
+}
+

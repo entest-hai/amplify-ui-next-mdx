@@ -1,0 +1,106 @@
+import * as React from 'react';
+import debounce from 'lodash/debounce';
+import {
+  Icon,
+  Heading,
+  Link,
+  Text,
+  View,
+  useTheme,
+} from '@aws-amplify/ui-react';
+import { SiW3C, SiReact } from 'react-icons/si';
+
+import { Sidebar } from './SecondaryNav';
+import { TableOfContents } from '../TableOfContents';
+import { Footer } from './Footer';
+//import { GITHUB_REPO_FILE } from '@/data/links';
+//import { DesignTokenIcon } from '@/components/DesignTokenIcon';
+
+export default function Page({
+  children,
+  frontmatter = {},
+}: {
+  children: any;
+  frontmatter?: any;
+}) {
+  const {
+    title,
+    description,
+    hideToc = false,
+    ariaPattern,
+    themeSource,
+    reactSource,
+  } = frontmatter;
+  const { tokens } = useTheme();
+  const [headings, setHeadings] = React.useState([]);
+
+  // TODO: is there a better way to do this?
+  React.useLayoutEffect(() => {
+    const updateHeaders = debounce(() => {});
+
+    const observer = new MutationObserver(updateHeaders);
+
+    observer.observe(document.querySelector('#__next'), {
+      childList: true,
+      subtree: true,
+    });
+
+    return () => observer.disconnect();
+  }, [children]);
+  return (
+    <div className="docs-main">
+      <Sidebar />
+      <main className="docs-content">
+        <section className="docs-content-body">
+          <section className="docs-meta">
+            <Heading level={1}>{title}</Heading>
+            <Text
+              fontSize={`${tokens.fontSizes.xl}`}
+              className="docs-description"
+            >
+              {description}
+            </Text>
+            <View className="docs-component-links">
+              {ariaPattern ? (
+                <Link
+                  className="docs-component-link"
+                  href={ariaPattern}
+                  isExternal
+                >
+                  <Icon
+                    ariaLabel=""
+                    as={SiW3C}
+                    marginInlineEnd={tokens.space.xs}
+                  />
+                  ARIA pattern
+                </Link>
+              ) : null}
+              {themeSource ? (
+                <Link className="docs-component-link" href={'/'} isExternal>
+                  Theme source
+                </Link>
+              ) : null}
+              {reactSource ? (
+                <Link className="docs-component-link" href={'/'} isExternal>
+                  <Icon
+                    ariaLabel=""
+                    as={SiReact}
+                    marginInlineEnd={tokens.space.xs}
+                  />
+                  React source
+                </Link>
+              ) : null}
+            </View>
+          </section>
+
+          {children}
+        </section>
+        <Footer />
+      </main>
+
+      {hideToc ? null : (
+        <TableOfContents title="Contents" headings={headings} />
+      )}
+    </div>
+  );
+}

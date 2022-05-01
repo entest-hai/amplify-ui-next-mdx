@@ -1,0 +1,47 @@
+.example {
+  width: 100%;
+}
+
+.example [data-amplify-authenticator] {
+  display: grid;
+  max-width: var(--amplify-components-authenticator-max-width);
+  margin: auto;
+}
+
+.example [data-amplify-authenticator][data-variation='modal'] {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: var(--amplify-space-relative-xxxl);
+}
+
+.example pre {
+  margin: 0;
+}
+
+.example-code {
+  position: relative;
+  background: var(--amplify-colors-background-secondary);
+  width: 100%;
+}
+
+.example-copy-button {
+  position: absolute;
+  top: var(--amplify-space-small);
+  right: var(--amplify-space-small);
+}
+
+.docs-component-demo {
+  width: 100%;
+  margin-bottom: var(--amplify-space-large);
+
+  pre {
+    white-space: pre-wrap;
+  }
+
+  & .example-copy-button {
+    bottom: var(--amplify-space-small);
+    top: auto;
+    right: var(--amplify-space-small);
+  }
+}
